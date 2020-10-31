@@ -7,14 +7,6 @@ const baseURL = "https://image.tmdb.org/t/p/original/";
 const Row = (props) => {
   const [movies, setMovies] = useState([]);
   let fetchUrl = props.fetchUrl;
-  //   useEffect(() => {
-  //     async function fetchData() {
-  //       const request = await axios.get(fetchUrl);
-  //       setMovies(request.data.results);
-  //       return request;
-  //     }
-  //     fetchData();
-  //   }, [fetchUrl]);
 
   useEffect(() => {
     axios.get(fetchUrl).then((response) => {
@@ -22,15 +14,18 @@ const Row = (props) => {
     });
   }, []);
 
-  console.table(movies);
+  // console.table(movies);
   return (
     <div className="row">
       <h1>{props.title}</h1>
       <div className="row_posters">
         {movies.map((movie) => (
           <img
-            className="row_poster"
-            src={`${baseURL}${movie.poster_path}`}
+            key={movie.id}
+            className={`row_poster ${props.isLargeRow && "row_posterLarge"}`}
+            src={`${baseURL}${
+              props.isLargeRow ? movie.poster_path : movie.backdrop_path
+            }`}
             alt={movie.name}
           />
         ))}
