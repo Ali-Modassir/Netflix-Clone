@@ -1,5 +1,7 @@
 Deployed on Firebase Live-Site -: https://netflix-clone-70b9f.web.app/
 
+A Netflix front-end clone, made using ReactJS using React-Hooks. It uses TMdb API for fetching movies and series.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
